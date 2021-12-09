@@ -3,7 +3,7 @@
 
 <head>
 	<title>Bug Logger - New Bug</title>
-  <link rel="icon" type="image/x-icon" href="./images/bug.ico">
+  <link rel="icon" type="image/x-icon" href="public/images/bug.png">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Fuzzy+Bubbles&display=swap" rel="stylesheet">
@@ -59,11 +59,17 @@
 			padding: 0px 8px 16px 32px;
 			text-decoration: none;
 			font-size: 25px;
-			color: #818181;
+			color: orange;
 			display: block;
 			transition: 0.3s;
 		}
+		#sidenav a:hover {
+      font-weight: bold;
+		}
 
+    #sidenav a:active {
+			transform: translateY(2px);
+		}
 		#menuTop {
 			text-align: right;
 		}
@@ -87,6 +93,9 @@
 			cursor: pointer;
 			display: block;
 			position: fixed;
+		}
+	  #menuOpener:hover {
+      font-weight: bold;
 		}
 
 		#pageTitle {
@@ -129,10 +138,11 @@
 			background-color: orange;
 			color: white;
 			cursor: pointer;
-			font-weight: bold;
 			width: 10rem;
 		}
-
+    .button:hover{
+      font-weight:bold;
+    }
 		.button:active {
 			transform: translateY(2px);
 		}
