@@ -7,6 +7,7 @@ let app = express();
 app.use('/public', express.static(process.cwd() + '/public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.set('view engine', 'pug');
 
 app.listen(3000, () => {
   console.log('App listening on port 3000')
@@ -32,7 +33,7 @@ let Bug = mongoose.model('Bug', bugSchema);
 
 app.route('/')
   .get(function(req, res) {
-    res.sendFile(process.cwd() + '/views/newbug.html');
+    res.render('pug/newbug');
   });
 
 app.route('/api/bugs')
