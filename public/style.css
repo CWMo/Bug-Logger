@@ -1,0 +1,131 @@
+body {
+  font-family: sans-serif;
+  background-color: orange;
+  color: white;
+  padding: 10px;
+}
+/* The side navigation menu */
+#sidenav {
+  height: 100%; /* 100% Full-height */
+  width: 0; /* 0 width - change this with JavaScript */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Stay on top */
+  top: 0; /* Stay at the top */
+  left: 0;
+  background-color: black;
+  overflow-x: hidden; /* Disable horizontal scroll */
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+  opacity: 0.9;
+}
+
+/* The navigation menu links */
+#sidenav a {
+  padding: 0px 8px 16px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: orange;
+  display: block;
+  transition: 0.3s;
+}
+#sidenav a:hover {
+  font-weight: bold;
+}
+#sidenav a:active {
+  transform: translateY(2px);
+}
+
+#menuTop {
+  text-align: right;
+}
+#closeBtn {
+  font-size: 4em;
+  cursor: pointer;
+  color: orange;
+}
+#closeBtn:hover {
+  font-weight: bold;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  #sidenav a {
+    font-size: 18px;
+  }
+  #menuTop a {
+    font-size: 3em;
+  }
+}
+
+#menuOpener {
+  font-size: 2em;
+  cursor: pointer;
+  display: block;
+  position: fixed;
+}
+#menuOpener:hover {
+  font-weight: bold;
+}
+
+#pageTitle {
+  text-align: center;
+}
+#msgLayer {
+  position: fixed;
+  margin: 0;
+  width: 100%;
+  height: 90%;
+  display: flex;
+  visibility: hidden;
+}
+
+#msg {
+  margin: auto;
+  color: white;
+  background-color: orange;
+  opacity: 0.5;
+  font-size: 0;
+  transition: 1s;
+}
+
+form {
+  background-color: purple;
+  padding: 5%;
+  max-width: 500px;
+  margin: auto;
+  border-radius: 0.2rem;
+  border: 1px solid transparent;
+}
+
+textarea {
+  height: 30vh;
+}
+
+.box, .halfBox {
+  font-family: "Fuzzy Bubbles", cursive; /* font to indicate user inputs */
+  border-radius: 0.1rem;
+  border: 1px solid transparent;
+}
+
+.box {
+  width: 99%;
+}
+
+.halfBox {
+  width: 220px;
+}
+
+.button {
+  padding: 0.375rem 0.75rem;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+  background-color: orange;
+  color: white;
+  cursor: pointer;
+  width: 10rem;
+}
+.button:hover{
+  font-weight:bold;
+}
+.button:active {
+  transform: translateY(2px);
+}

@@ -16,6 +16,7 @@ app.listen(3000, () => {
 mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 console.log("after connect");
 
+const pList = ['Open', 'In Progress', 'Closed', 'Cancelled', 'Suspended'] 
 const bugSchema = new mongoose.Schema({
   title: { type: String, required: true },
   desc: {type: String, required: true},
@@ -25,7 +26,7 @@ const bugSchema = new mongoose.Schema({
   updatedOn: {type:Date, default: Date.now},
   status: {
     type: String, 
-    enum: ['Open', 'In Progress', 'Closed', 'Cancelled', 'Suspended'], 
+    enum: pList, 
     default: "Open"}
 });
 
@@ -33,7 +34,7 @@ let Bug = mongoose.model('Bug', bugSchema);
 
 app.route('/')
   .get(function(req, res) {
-    res.render('pug/newbug');
+    res.render('pug/newbug',{pList});
   });
 
 app.route('/api/bugs')
