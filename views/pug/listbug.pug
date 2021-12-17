@@ -1,0 +1,85 @@
+doctype html
+html
+  head
+    title Bug Logger
+    include includes/linkstyle
+    style.
+      .bugList {
+        background-color: purple;
+        margin: auto;
+        max-width: 100%;
+        border-radius: 0.2rem;
+        overflow: hidden;
+        padding: 5px 10px;
+        font-size: 0.9rem;
+      }
+
+      .bugList thead {
+        text-align: left;
+      }
+
+      .bugList thead tr th {
+        padding: 0 5px;
+      }
+
+      .bugList tbody tr td {
+        padding: 0 5px;
+        font-family: "Fuzzy Bubbles", cursive; 
+        cursor: pointer;
+      }
+
+      .bugList tbody tr:nth-of-type(even) {
+        background-color: purple;
+      }
+
+      .bugList tbody tr:nth-of-type(odd) {
+        background-color: white;
+        color: black;
+      }
+
+      .bugList tbody tr {
+        border-bottom: 1px solid #dddddd;
+      }
+
+      tbody:hover tr:nth-of-type(even) {
+        color: transparent;
+        text-shadow: 0 0 3px white;
+      }
+
+      tbody:hover tr:nth-of-type(odd) {
+        color: transparent;
+        text-shadow: 0 0 3px black;
+      }
+
+      tbody:hover tr:nth-of-type(even):hover {
+        color: white;
+        text-shadow: none;
+      }
+
+      tbody:hover tr:nth-of-type(odd):hover {
+        color: black;
+        text-shadow: none;
+      }
+  body
+    include includes/navbar
+    section
+      h1#pageTitle Click  to Update/View the Bug
+      table.bugList
+        thead
+          tr
+            th Status
+            th Title
+            th Dated Created
+            th Last Modified
+            th Assigned to
+            th Created by
+        tbody
+          each bug in bList
+            tr 
+              td= bug.status
+              td= bug.title
+              td= bug.createdOn.toLocaleDateString()
+              td= bug.updatedOn.toLocaleDateString()
+              td Peter
+              td Simon
+    script(src="https://code.jquery.com/jquery-2.2.1.min.js" integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00=" crossorigin="anonymous")
