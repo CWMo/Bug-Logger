@@ -69,17 +69,26 @@ html
           tr
             th Status
             th Title
+            th Priority
             th Dated Created
             th Last Modified
             th Assigned to
             th Created by
         tbody
           each bug in bList
-            tr 
+            tr(data-href=`/editbug/${bug._id}`) 
               td= bug.status
               td= bug.title
+              td= bug.priority
               td= bug.createdOn.toLocaleDateString()
               td= bug.updatedOn.toLocaleDateString()
               td Peter
               td Simon
     script(src="https://code.jquery.com/jquery-2.2.1.min.js" integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00=" crossorigin="anonymous")
+    script(type="text/JavaScript").
+      $(function(){
+        $('table tr').click(function(){
+          window.location = $(this).data('href');
+          return false;
+        });
+      });

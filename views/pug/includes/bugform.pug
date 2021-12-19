@@ -1,0 +1,56 @@
+form#bugForm
+  if bug._id
+    select#status.halfBox(name="status" required)
+      each s in sList
+        if bug.status == s 
+          option(value=s selected) #{s}
+        else
+          option(value=s) #{s}
+  label Title
+    br
+    input#title.box(type="text" name="title" placeholder="Briefly describe the bug" value=`${bug.title}` required)
+  br
+  br
+  label Description
+    br
+    textarea#desc.box(name="desc" placeholder="Describe in details" required) #{bug.desc}
+  br
+  br
+  #categoryArea
+    label Priority
+      br
+      select#priority.halfBox(name="priority" required)
+        if !bug.priority
+          option(value="" selected disabled) Select a level of priority
+        each p in pList
+          if bug.priority == p 
+            option(value=p selected) #{p}
+          else
+            option(value=p) #{p}
+    br
+    br
+    label Assign to (may be done later)
+      br
+      select#assignTo.halfBox(name="assignTo")
+        option(value="" selected disabled) Select a person for this bug
+  br
+  br
+  #buttonArea
+    input#submit.button(type="submit" value="Submit")
+  if bug._id
+    #trivialStart
+      br
+      hr
+      #trivialArea
+        label Created by
+          br
+          input#createdBy.halfBox(type="text" name="createdBy" value=`${bug.createdBy}` readonly)
+        label Created on
+          br
+          input#createdOn.halfBox(type="text" name="createdOn" value=`${bug.createdOn}` readonly)
+        label ID
+          br
+          input#bugID.halfBox(type="text" name="id" value=`${bug._id}` readonly)
+        label Last Modified on
+          br
+          input#updatedOn.halfBox(type="text" name="updatedOn" value=`${bug.updatedOn}` readonly)

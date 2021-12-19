@@ -1,28 +1,29 @@
 doctype html
 html
   head
-    title Bug Logger - New Bug
+    title Bug Logger - Edit Bug 
     include includes/linkstyle
   body
     #msgLayer
-      #msg The Bug is now recorded.
+      #msg The change is saved.
     include includes/navbar
     section
-      h1#pageTitle Record a newly found Bug
+      h1#pageTitle View/Edit Bug
       include includes/bugform
     script(src="https://code.jquery.com/jquery-2.2.1.min.js" integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00=" crossorigin="anonymous")
     script(type="text/JavaScript").
       $(function() {
         $("#title").focus();
         $('#bugForm').submit(function(e){
+          console.log("inside submit");
           $.ajax({
-            type: "post",
-            url: "/api/bugs",
+            type: "PUT",
+            url: "/api/bugs/"+ "#{bug.id}",
             data: $(this).serialize(),
             success: function(data) {
               $("#msgLayer").css("visibility","visible");
               $("#msg").css("fontSize","200%");
-              setTimeout(()=>{window.location.reload(true)}, 1000); 
+              setTimeout(()=>{window.location.replace("/")}, 1000); 
             }
           });
           e.preventDefault();
