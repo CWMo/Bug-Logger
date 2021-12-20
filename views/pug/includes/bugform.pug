@@ -1,3 +1,4 @@
+- if (!bug) {bug = {_id: null, title: ""}}
 form#bugForm
   if bug._id
     select#status.halfBox(name="status" required)
@@ -20,7 +21,7 @@ form#bugForm
     label Priority
       br
       select#priority.halfBox(name="priority" required)
-        if !bug.priority
+        if !bug._id
           option(value="" selected disabled) Select a level of priority
         each p in pList
           if bug.priority == p 
@@ -48,9 +49,9 @@ form#bugForm
         label Created on
           br
           input#createdOn.halfBox(type="text" name="createdOn" value=`${bug.createdOn}` readonly)
-        label ID
+        label Bug ID
           br
-          input#bugID.halfBox(type="text" name="id" value=`${bug._id}` readonly)
+          input#bugID.halfBox(type="text" name="_id" value=`${bug._id}` readonly)
         label Last Modified on
           br
           input#updatedOn.halfBox(type="text" name="updatedOn" value=`${bug.updatedOn}` readonly)
