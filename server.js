@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const {Bug, sList, pList} = require("./models/Bug");
 const {listBug, editBug, newBug} = require("./controllers/bugController");
 const bugApi = require("./controllers/bugApiController");
+const loginUser = require("./controllers/loginController");
 
 let app = express();
 app.use('/public', express.static(process.cwd() + '/public'));
@@ -20,6 +21,13 @@ mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopol
 console.log("after connect");
 
 app.route('/').get(listBug);
+
+app.route('/auth/login')
+  .get((req, res) => {
+    res.render('pug/login')
+  })
+  .post(loginUser);
+
 app.route('/newbug').get(newBug);
 app.route('/editbug/:bugID').get(editBug);
 

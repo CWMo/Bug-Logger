@@ -1,0 +1,58 @@
+doctype html
+html
+  head
+    title Bug Logger
+    include includes/linkstyle
+    style.
+      #signInForm {
+        background-color: purple;
+        padding: 1.5em;
+        max-width: 225px;
+        margin: auto;
+        border-radius: 0.2rem;
+        border: 1px solid transparent;
+      }
+
+      a, a:visited {
+        color: orange;
+      }
+  body
+    h1#pageTitle Welcome to Bug Logger
+    form#signInForm(action="/auth/login" method="post")
+      label User Name
+        br
+        input#username.halfBox(type="text" name="username" required)
+      br
+      br
+      label Password
+        br
+        input#password.halfBox(type="password" name="password" required)
+      br
+      br
+      br
+      #buttonArea
+        input#submit.button(type="submit" value="Sign in")
+      br
+      hr
+      #extraArea
+        a#resetPwd(href="#") Forgot user name / password?
+        | New user? 
+        a(href="#") Register here
+    script(src="https://code.jquery.com/jquery-2.2.1.min.js" integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00=" crossorigin="anonymous")
+    script(type="text/JavaScript").
+      $(function() {
+        $("#username").focus();
+        $('#bugForm').submit(function(e){
+          $.ajax({
+            type: "post",
+            url: "/api/bugs",
+            data: $(this).serialize(),
+            success: function(data) {
+              $("#msgLayer").css("visibility","visible");
+              $("#msg").css("fontSize","200%");
+              setTimeout(()=>{window.location.reload(true)}, 1000); 
+            }
+          });
+          e.preventDefault();
+        });
+      });  
