@@ -1,0 +1,58 @@
+doctype html
+html
+  head
+    title Bug Logger - New User
+    include includes/linkstyle
+    style.
+      #signInForm {
+        background-color: purple;
+        padding: 1.5em;
+        max-width: 225px;
+        margin: auto;
+        border-radius: 0.2rem;
+        border: 1px solid transparent;
+      }
+  body
+    h1#pageTitle New User Registration
+    form#signInForm(action="/auth/newuser" method="post")
+      label User Name
+        br
+        input#userName.halfBox(type="text" name="userName" required autofocus)
+      br
+      br
+      label Password
+        br
+        input#password.halfBox(type="password" name="password" required)
+      br
+      br
+      label Email
+        br
+        input#email.halfBox(type="email" name="email" required)
+      br
+      br
+      label Full Name
+        br
+        input#fullName.halfBox(type="text" name="fullName" required)
+      br
+      br
+      br
+      #buttonArea
+        input#submit.button(type="submit" value="Submit")
+      br
+    script(src="https://code.jquery.com/jquery-2.2.1.min.js" integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00=" crossorigin="anonymous")
+    script(type="text/JavaScript").
+      $(function() {
+        $('#bugForm').submit(function(e){
+          $.ajax({
+            type: "post",
+            url: "/api/bugs",
+            data: $(this).serialize(),
+            success: function(data) {
+              $("#msgLayer").css("visibility","visible");
+              $("#msg").css("fontSize","200%");
+              setTimeout(()=>{window.location.reload(true)}, 1000); 
+            }
+          });
+          e.preventDefault();
+        });
+      });  

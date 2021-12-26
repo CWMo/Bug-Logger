@@ -6,6 +6,7 @@ const {Bug, sList, pList} = require("./models/Bug");
 const {listBug, editBug, newBug} = require("./controllers/bugController");
 const bugApi = require("./controllers/bugApiController");
 const loginUser = require("./controllers/loginController");
+const {createUser} = require("./controllers/userController");
 
 let app = express();
 app.use('/public', express.static(process.cwd() + '/public'));
@@ -27,6 +28,12 @@ app.route('/auth/login')
     res.render('pug/login')
   })
   .post(loginUser);
+
+app.route('/auth/newuser')
+  .get((req, res) => {
+    res.render('pug/newuser')
+  })
+  .post(createUser);
 
 app.route('/newbug').get(newBug);
 app.route('/editbug/:bugID').get(editBug);

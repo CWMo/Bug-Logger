@@ -9,7 +9,7 @@ form#bugForm
           option(value=s) #{s}
   label Title
     br
-    input#title.box(type="text" name="title" placeholder="Briefly describe the bug" value=`${bug.title}` required)
+    input#title.box(type="text" name="title" placeholder="Briefly describe the bug" value=`${bug.title}` required autofocus)
   br
   br
   label Description

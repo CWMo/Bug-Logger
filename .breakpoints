@@ -1,12 +1,3 @@
 {
-  "files": {
-    "controllers/loginController.js": [
-      {
-        "id": "7340859c-8a86-4157-8de9-3e1e4767a48e",
-        "line": 4,
-        "version": 55,
-        "index": 104
-      }
-    ]
-  }
+  "files": {}
 }
