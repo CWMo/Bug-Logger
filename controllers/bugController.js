@@ -16,6 +16,7 @@ function editBug(req, res) {
 };
 
 function listBug(req, res) {
+  console.log({session: req.session});
   Bug.find((err, bList) => {
     res.render('pug/listbug', { bList });
   })

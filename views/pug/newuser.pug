@@ -39,20 +39,3 @@ html
       #buttonArea
         input#submit.button(type="submit" value="Submit")
       br
-    script(src="https://code.jquery.com/jquery-2.2.1.min.js" integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00=" crossorigin="anonymous")
-    script(type="text/JavaScript").
-      $(function() {
-        $('#bugForm').submit(function(e){
-          $.ajax({
-            type: "post",
-            url: "/api/bugs",
-            data: $(this).serialize(),
-            success: function(data) {
-              $("#msgLayer").css("visibility","visible");
-              $("#msg").css("fontSize","200%");
-              setTimeout(()=>{window.location.reload(true)}, 1000); 
-            }
-          });
-          e.preventDefault();
-        });
-      });  
