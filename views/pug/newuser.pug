@@ -12,27 +12,34 @@ html
         border-radius: 0.2rem;
         border: 1px solid transparent;
       }
+      .error {
+        text-align: center;
+        background-color: red;
+      }
   body
     h1#pageTitle New User Registration
+    if errors
+      each e in errors
+        .error= e
     form#signInForm(action="/auth/newuser" method="post")
       label User Name
         br
-        input#userName.halfBox(type="text" name="userName" required autofocus)
+        input#userName.halfBox(type="text" name="userName" value=`${data.userName}` required autofocus)
       br
       br
       label Password
         br
-        input#password.halfBox(type="password" name="password" required)
+        input#password.halfBox(type="password" name="password" value=`${data.password}` required)
       br
       br
       label Email
         br
-        input#email.halfBox(type="email" name="email" required)
+        input#email.halfBox(type="email" name="email" value=`${data.email}` required)
       br
       br
       label Full Name
         br
-        input#fullName.halfBox(type="text" name="fullName" required)
+        input#fullName.halfBox(type="text" name="fullName" value=`${data.fullName}` required)
       br
       br
       br

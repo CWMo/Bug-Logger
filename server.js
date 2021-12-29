@@ -8,7 +8,7 @@ const {listBug, editBug, newBug} = require("./controllers/bugController");
 const bugApi = require("./controllers/bugApiController");
 const login = require("./controllers/loginController");
 const logout = require("./controllers/logoutController");
-const {createUser} = require("./controllers/userController");
+const {createUser, newUser} = require("./controllers/userController");
 const authMiddleware = require("./controllers/authMiddleware");
 
 let app = express();
@@ -31,14 +31,14 @@ app.route('/').get(authMiddleware, listBug);
 
 app.route('/auth/login')
   .get((req, res) => {
-    res.render('pug/login')
+    const errors = req.session.errors || null;
+    req.session.errors = null;
+    res.render('pug/login', {errors})
   })
   .post(login);
 
 app.route('/auth/newuser')
-  .get((req, res) => {
-    res.render('pug/newuser')
-  })
+  .get(newUser)
   .post(createUser);
 
 app.route('/auth/logout')

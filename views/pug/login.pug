@@ -12,7 +12,10 @@ html
         border-radius: 0.2rem;
         border: 1px solid transparent;
       }
-
+      .error {
+        text-align: center;
+        background-color: red;
+      }
       a, a:visited {
         color: orange;
       }
@@ -22,6 +25,9 @@ html
       }
   body
     h1#pageTitle Welcome to Bug Logger
+    if errors
+      each e in errors
+        .error= e
     form#signInForm(action="/auth/login" method="post")
       label User Name
         br
