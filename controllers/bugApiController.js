@@ -18,6 +18,7 @@ function updateBug(req, res) {
     }
   }
   bug.updatedOn = new Date();
+  console.log({bug: bug});
   Bug.findByIdAndUpdate(req.params.bugID, bug, (err, savedBug) => {
     if (!err && savedBug) {
       return res.json({ returnCode: 0 });
@@ -32,7 +33,8 @@ function createBug(req, res) {
     title: req.body.title,
     desc: req.body.desc,
     priority: req.body.priority,
-    assignedTo: req.body.assignedTo || ""
+    assignedTo: req.body.assignedTo || null,
+    createdBy: req.session.userId
     // the || "" part is necessary otherwise, the field may not be stored when undefined
   });
   b.save(function(err, data) {

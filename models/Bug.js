@@ -10,7 +10,15 @@ const bugSchema = new mongoose.Schema({
     enum: pList,
     required: true
   },
-  assignedTo: String,
+  assignedTo: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User'
+  },
+  createdBy: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    required: true
+  },
   createdOn: { type: Date, default: Date.now },
   updatedOn: { type: Date, default: Date.now },
   status: {

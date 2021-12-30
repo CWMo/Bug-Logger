@@ -32,8 +32,14 @@ form#bugForm
     br
     label Assign to (may be done later)
       br
-      select#assignTo.halfBox(name="assignTo")
-        option(value="" selected disabled) Select a person for this bug
+      select#assignedTo.halfBox(name="assignedTo")
+        if !bug.assignedTo
+          option(value="" selected disabled) Select a person for this bug
+        each u in uList
+          if bug.assignedTo == u._id
+            option(value=u._id selected) #{u.fullName}
+          else
+            option(value=u._id) #{u.fullName}
   br
   br
   #buttonArea
@@ -45,10 +51,10 @@ form#bugForm
       #extraArea
         label Created by
           br
-          input#createdBy.halfBox(type="text" name="createdBy" value=`${bug.createdBy}` readonly)
+          input#createdBy.halfBox(type="text" value=`${bug.createdBy.fullName}` readonly)
         label Created on
           br
-          input#createdOn.halfBox(type="text" name="createdOn" value=`${bug.createdOn}` readonly)
+          input#createdOn.halfBox(type="text" value=`${bug.createdOn}` readonly)
         label Bug ID
           br
           input#bugID.halfBox(type="text" name="_id" value=`${bug._id}` readonly)

@@ -2,8 +2,9 @@ const bcrypt = require('bcrypt');
 const User = require('../models/User');
 
 module.exports = (req, res) =>{
-  const { username, password } = req.body;
-  User.findOne({username}, (e,user) => {
+  const { userName, password } = req.body;
+  console.log({userName});
+  User.findOne({userName}, (e,user) => {
     if (user) {
       bcrypt.compare(
         password, 
