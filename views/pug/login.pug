@@ -28,7 +28,7 @@ html
     if errors
       each e in errors
         .error= e
-    form#signInForm(action="/auth/login" method="post")
+    form#signInForm(action="/auth/login" method="post" title="You may register as a new user or try albert/123 to log in")
       label User Name
         br
         input#userName.halfBox(type="text" name="userName" required autofocus)
