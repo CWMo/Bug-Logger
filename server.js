@@ -20,9 +20,9 @@ app.use(expressSession({
 }))
 app.set('view engine', 'pug');
 
-app.listen(3000, () => {
-  console.log('App listening on port 3000')
-})
+const listener = app.listen(process.env.PORT || 3000, function () {
+  console.log('Your app is listening on port ' + listener.address().port);
+});
 
 mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 console.log("after connect");
