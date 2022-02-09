@@ -1,7 +1,9 @@
+//- As it include bugform, so all parameters of bugform are required
 doctype html
 html
   head
     title Bug Logger - Edit Bug 
+    link(rel='stylesheet', href='https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css')    
     include includes/linkstyle
   body
     #msgLayer
@@ -11,10 +13,10 @@ html
       h1#pageTitle View/Edit Bug
       include includes/bugform
     script(src="https://code.jquery.com/jquery-2.2.1.min.js" integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00=" crossorigin="anonymous")
+    script(src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js")
     script(type="text/JavaScript").
       $(function() {
         $('#bugForm').submit(function(e){
-          console.log("inside submit");
           $.ajax({
             type: "PUT",
             url: "/api/bugs/"+ "#{bug.id}",
@@ -22,9 +24,24 @@ html
             success: function(data) {
               $("#msgLayer").css("visibility","visible");
               $("#msg").css("fontSize","200%");
-              setTimeout(()=>{window.location.replace("/")}, 1000); 
+              setTimeout(()=>{
+                //$("#msgLayer").css("visibility","hidden"); //prevent retention on next display of the same screen
+                window.location.replace("/")}, 1000); 
             }
           });
           e.preventDefault();
         });
+        $('#summernote').summernote({
+          height: "30vh",
+          placeholder: "Describe in details",
+          toolbar: [
+          ['font', ['bold', 'underline']],
+          ['color', ['color']],
+          ['para', ['ul', 'ol', 'paragraph']],
+          ['table', ['table']],
+          ['insert', ['link', 'picture']],
+          ['view', ['fullscreen', 'codeview']]
+        ]
+        });
+        $(".note-editor").css("font-size", $("#title").css("font-size"));
       });  

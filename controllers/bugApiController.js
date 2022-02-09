@@ -18,7 +18,6 @@ function updateBug(req, res) {
     }
   }
   bug.updatedOn = new Date();
-  console.log({bug: bug});
   Bug.findByIdAndUpdate(req.params.bugID, bug, (err, savedBug) => {
     if (!err && savedBug) {
       return res.json({ returnCode: 0 });

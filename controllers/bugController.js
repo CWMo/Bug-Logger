@@ -1,7 +1,6 @@
 const {Bug, sList, pList} = require("../models/Bug");
 const User = require("../models/User");
 
-
 function newBug(req, res) {
   User.find().exec((err, uList)=>{
     res.render('pug/newbug', { pList, uList });
@@ -27,7 +26,6 @@ function editBug(req, res) {
 };
 
 function listBug(req, res) {
-  console.log({session: req.session});
   Bug.find()
     .populate("createdBy")
     .populate("assignedTo")

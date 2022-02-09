@@ -76,12 +76,23 @@ body {
   padding: 5%;
   max-width: 500px;
   margin: auto;
-  border-radius: 
+  border-radius: 0.2rem;
   border: 1px solid transparent;
 }
 
 textarea {
   height: 30vh;
+}
+
+.note-editor {
+  background: white;
+  color: black;
+  font-family: "Fuzzy Bubbles", cursive;
+}
+
+/* avoid extra space on top of the first input line of summernote */
+.note-editable p {
+  margin-top: 0;
 }
 
 .box, .halfBox {
@@ -151,7 +162,7 @@ textarea {
   transition: 1s;
 }
 
-#status {
+#statusArea {
   float: right;
   position: relative;
   top: -5px;

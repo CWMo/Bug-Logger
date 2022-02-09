@@ -3,7 +3,6 @@ const User = require('../models/User');
 
 module.exports = (req, res) =>{
   const { userName, password } = req.body;
-  console.log({userName});
   User.findOne({userName}, (e,user) => {
     if (user) {
       bcrypt.compare(

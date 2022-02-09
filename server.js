@@ -14,12 +14,15 @@ const authMiddleware = require("./controllers/authMiddleware");
 let app = express();
 app.use('/public', express.static(process.cwd() + '/public'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ 
+  limit: '50mb',
+  extended: true }));
 app.use(expressSession({
     secret: 'Mo Chau Woon'
 }))
 app.set('view engine', 'pug');
 
+// enable dynamic port for heroku
 const listener = app.listen(process.env.PORT || 3000, function () {
   console.log('Your app is listening on port ' + listener.address().port);
 });

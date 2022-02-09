@@ -1,3 +1,4 @@
+//- Parameter: bList - an array of bug objects
 doctype html
 html
   head
@@ -18,34 +19,35 @@ html
         text-align: left;
       }
 
-      .bugList thead tr th {
+      .bugList th {
         padding: 0 5px;
       }
 
-      .bugList tbody tr td {
+      .bugList td {
         padding: 0 5px;
         font-family: "Fuzzy Bubbles", cursive; 
         cursor: pointer;
       }
 
-      .bugList tbody tr:nth-of-type(even) {
+      .bugList tr:nth-of-type(even) {
         background-color: purple;
       }
 
+      /* exclude table heading */
       .bugList tbody tr:nth-of-type(odd) {
         background-color: white;
         color: black;
       }
 
-      .bugList tbody tr {
+      .bugList tr {
         border-bottom: 1px solid #dddddd;
       }
 
+      /*  blur out all non-current rows when hovering */
       tbody:hover tr:nth-of-type(even) {
         color: transparent;
         text-shadow: 0 0 3px white;
       }
-
       tbody:hover tr:nth-of-type(odd) {
         color: transparent;
         text-shadow: 0 0 3px black;
@@ -55,7 +57,6 @@ html
         color: white;
         text-shadow: none;
       }
-
       tbody:hover tr:nth-of-type(odd):hover {
         color: black;
         text-shadow: none;
